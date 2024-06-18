@@ -16,5 +16,10 @@ public class Manager extends Employee{
     public double getBonus(){
         return this.bonus;
     }
+
+    @Override
+    public double getSalary(){
+        return this.salary + bonus;
+    }
     
 }

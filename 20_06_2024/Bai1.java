@@ -17,20 +17,22 @@ public class Bai1 {
         HashMap<Character, Boolean> map = new HashMap<>();
 
         //Solution
-        for(int i = 0; i < inputString.length(); i++){
-            if(!map.containsKey(inputString.charAt(i))){
-                map.put(inputString.charAt(i), false);
+        for(char mChar:inputString.toCharArray()){
+            //if key not contain
+            if(!map.containsKey(mChar)){
+                map.put(mChar, false);
             }          
             else{
-                map.replace(inputString.charAt(i), true);
+                map.replace(mChar, true);
             }
         }
 
+        //loop through input string with map
         for(char mChar:inputString.toCharArray()){
             boolean isDuplicated = map.get(Character.valueOf(mChar));
 
             if(!isDuplicated){
-                System.out.println(mChar);
+                System.out.println("Chuoi khong lap dau tien: " + mChar);
                 break;
             }
         }

@@ -29,7 +29,7 @@ public class Bai1 {
 
         //loop through input string with map
         for(char mChar:inputString.toCharArray()){
-            boolean isDuplicated = map.get(Character.valueOf(mChar));
+            boolean isDuplicated = map.get(mChar);
 
             if(!isDuplicated){
                 System.out.println("Ky tu khong lap dau tien: " + mChar);

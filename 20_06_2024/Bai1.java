@@ -32,7 +32,7 @@ public class Bai1 {
             boolean isDuplicated = map.get(Character.valueOf(mChar));
 
             if(!isDuplicated){
-                System.out.println("Chuoi khong lap dau tien: " + mChar);
+                System.out.println("Ky tu khong lap dau tien: " + mChar);
                 break;
             }
         }

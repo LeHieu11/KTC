@@ -21,6 +21,8 @@ public class Bai6 {
             }
         }
 
+        myScanner.close();
+
         if(duplicateNums.size() != 0){
             System.out.print("Error: Duplicate number found: " + duplicateNums.toString());
         }else{

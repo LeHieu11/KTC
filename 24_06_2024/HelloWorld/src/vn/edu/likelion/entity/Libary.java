@@ -164,7 +164,7 @@ public class Libary {
     }
 
     public void printAllUserInfos(){
-        int stt = 0;
+        int stt = 1;
         for (User user : users) {
             System.out.print("STT:" + stt);
             System.out.print("\t\tTen: " + user.getName());
@@ -181,6 +181,7 @@ public class Libary {
                 }
             }
 
+            stt++;
             System.out.print("\n}");
         }
     }

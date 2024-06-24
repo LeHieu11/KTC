@@ -163,20 +163,6 @@ public class Libary {
         System.out.println("Ten nguoi dung khong co");
     }
 
-    public void updateBorrowBook(String userName,
-                                 String oldBookName, String oldAuthorName,
-                                 String newBookName, int newAmount,
-                                 LocalDate newEnd) {
-        //find the user with userName
-        for (User tmpUser:users) {
-            if (tmpUser.getName().equals(userName)) {
-
-            }
-        }
-
-        return;
-    }
-
     public void printAllUserInfos(){
         int stt = 0;
         for (User user : users) {

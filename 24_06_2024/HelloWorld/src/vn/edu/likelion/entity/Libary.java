@@ -154,7 +154,7 @@ public class Libary {
                 currUser.addTicket(new Ticket(bookInfo, amount, start, end));
 
                 //update bookAvailability
-                bookAvailability.put(key, bookAvailability.get(key) - 1);
+                bookAvailability.put(key, bookAvailability.get(key) - amount);
 
                 return;
             }

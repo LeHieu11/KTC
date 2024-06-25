@@ -70,12 +70,13 @@ public class Libary {
             if(book.getName().equals(name) &&
                 book.getAuthorName().equals(authorName)){
                 books.remove(book);
+
+                //update hashmap
+                bookAvailability.put(key, bookAvailability.get(key) - 1);
+                
                 return;
             }
         }
-
-        //update hashmap
-        bookAvailability.put(key, bookAvailability.get(key) - 1);
 
         System.out.println("Khong tim thay sach duoc chon");
     }

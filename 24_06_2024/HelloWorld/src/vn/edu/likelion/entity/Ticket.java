@@ -1,8 +1,6 @@
 package vn.edu.likelion.entity;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.HashMap;
 
 public class Ticket {
     private String bookInfo;

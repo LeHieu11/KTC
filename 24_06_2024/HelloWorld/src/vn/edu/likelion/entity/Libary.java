@@ -3,11 +3,8 @@ package vn.edu.likelion.entity;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.concurrent.ThreadLocalRandom;
 
 public class Libary {
-    private final int MAXBOUND = 100;
-
     private ArrayList<Book> books;
     private ArrayList<User> users;
     private HashMap<String, Integer> bookAvailability;
@@ -68,6 +65,7 @@ public class Libary {
             return;
         }
 
+        //Remove books
         for (Book book : books) {
             if(book.getName().equals(name) &&
                 book.getAuthorName().equals(authorName)){
@@ -75,6 +73,9 @@ public class Libary {
                 return;
             }
         }
+
+        //update hashmap
+        bookAvailability.put(key, bookAvailability.get(key) - 1);
 
         System.out.println("Khong tim thay sach duoc chon");
     }

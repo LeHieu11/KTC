@@ -3,8 +3,6 @@ package vn.edu.likelion.app;
 import vn.edu.likelion.entity.Libary;
 
 import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-import java.util.Locale;
 import java.util.Scanner;
 
 public class Main {

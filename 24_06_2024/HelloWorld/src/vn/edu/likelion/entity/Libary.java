@@ -75,10 +75,10 @@ public class Libary {
                 bookAvailability.put(key, bookAvailability.get(key) - 1);
 
                 amount--;
+            }
 
-                if (amount == 0) {
-                    return;
-                }
+            if (amount == 0) {
+                return;
             }
         }
 

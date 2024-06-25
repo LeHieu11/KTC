@@ -15,6 +15,16 @@ public class Libary {
         bookAvailability = new HashMap<>();
     }
 
+    public void printRemainBook() {
+        for (String key : bookAvailability.keySet()) {
+            String bookName = key.split(":")[0];
+            String authorName = key.split(":")[1];
+
+            System.out.println("Book name: " + bookName +
+                                "\t\tauthor: " + authorName +
+                                "\t\tamount: " + bookAvailability.get(key));
+        }
+    }
 
     public void printAllBooks(){
         HashMap<String, Integer> map = new HashMap<>();

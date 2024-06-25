@@ -192,6 +192,16 @@ public class Main {
                     }
 
                     break;
+                case 9:
+                    try {
+                        myLib.printRemainBook();
+                        System.out.println("Done");
+                        System.out.println("************************************************");
+                    }
+                    catch(Exception e) {
+                        System.err.println("Wrong");
+                    }
+                    break;
                 default:
                     System.out.println("Lua chon khong hop le");
                     break;

@@ -56,11 +56,11 @@ public class Libary {
         }
     }
 
-    public void deleteBook(String name, String authorName) {
+    public void deleteBook(String name, String authorName, int amount) {
         String key = name + ":" + authorName;
 
         //Nếu không có sách sẵn trong thư viện
-        if (bookAvailability.get(key) == 0){
+        if (bookAvailability.get(key) < amount){
             System.out.println("Sach dang duoc muon");
             return;
         }
@@ -74,7 +74,11 @@ public class Libary {
                 //update hashmap
                 bookAvailability.put(key, bookAvailability.get(key) - 1);
 
-                return;
+                amount--;
+
+                if (amount == 0) {
+                    return;
+                }
             }
         }
 

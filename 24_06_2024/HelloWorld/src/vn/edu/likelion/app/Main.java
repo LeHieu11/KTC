@@ -112,7 +112,10 @@ public class Main {
                         System.out.print("Ten Tac Gia: ");
                         authorName = myScanner.next();
 
-                        myLib.deleteBook(bookName, authorName);
+                        System.out.print("So luong: ");
+                        amount = Integer.parseInt(myScanner.next());
+
+                        myLib.deleteBook(bookName, authorName, amount);
                         System.out.println("Done");
                         System.out.println("************************************************");
                     }

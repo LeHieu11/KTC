@@ -117,7 +117,7 @@ public class Libary {
             return;
         }
 
-        //check if name exist
+        //check if name exist7
         for (User currUser: users) {
             if (currUser.getName().equals(name)) {
                 System.out.println("Hay chon ten khac");
@@ -192,7 +192,7 @@ public class Libary {
             }
 
             stt++;
-            System.out.print("\n}");
+            System.out.println("\n}");
         }
     }
 

@@ -73,7 +73,7 @@ public class Libary {
 
                 //update hashmap
                 bookAvailability.put(key, bookAvailability.get(key) - 1);
-                
+
                 return;
             }
         }
@@ -115,6 +115,14 @@ public class Libary {
         if (age <= 16){
             System.out.println("Nguoi dung phai co tuoi tren 16");
             return;
+        }
+
+        //check if name exist
+        for (User currUser: users) {
+            if (currUser.getName().equals(name)) {
+                System.out.println("Hay chon ten khac");
+                return;
+            }
         }
 
         users.add(new User(name, age));

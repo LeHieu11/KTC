@@ -170,6 +170,12 @@ public class Library {
 
     public void updateUser(String oldName,
                            String newName, int newAge) {
+        //Check age
+        if (newAge < 16) {
+            System.out.println("Tuoi phai tren 16");
+            return;
+        }
+
         for (User currUser:users){
             //find the user and update
             if (currUser.getName().equals(oldName)) {

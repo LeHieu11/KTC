@@ -193,6 +193,24 @@ public class Main {
                     }
 
                     break;
+                case 9:
+                    try {
+                        System.out.print("Ten nguoi muon: ");
+                        userName = myScanner.next();
+
+                        System.out.print("Ten sach: ");
+                        bookName = myScanner.next();
+
+                        System.out.print("Ten tac gia sach: ");
+                        authorName = myScanner.next();
+
+                        myLib.returnBook(userName, bookName, authorName);
+                    } 
+                    catch (Exception e) {
+                        System.err.println("Wrong");
+                    }
+
+                    break;
                 default:
                     System.out.println("Lua chon khong hop le");
                     break;
@@ -213,6 +231,7 @@ public class Main {
         System.out.println("Muon sach: 6");
         System.out.println("In tat ca thong tin nguoi muon: 7");
         System.out.println("Sua thong tin nguoi dung: 8");
+        System.out.println("Tra sach: 9");
         System.out.println("Dung chuong trinh an: 0");
         System.out.print("\nLua chon cua ban: ");
     }

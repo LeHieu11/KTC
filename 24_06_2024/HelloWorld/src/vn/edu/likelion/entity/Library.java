@@ -101,8 +101,8 @@ public class Library {
 
     //chagne book info depend on hom many book remain in library
     public void updateBook(String oldName, String oldAuthorName, 
-                        String newName, String newAuthorName,
-                        int amount) {
+    String newName, String newAuthorName,
+    int amount) {
         //check if old info is the same as new info
         if (oldName.equals(newName) && oldAuthorName.equals(newAuthorName)) {
             System.out.println("Thong tin cu va moi phai it nhat co mot truong khac nhau");
@@ -186,8 +186,8 @@ public class Library {
     }
 
     public void borrowBook(String userName,
-                            String bookName, String authorName, int amount,
-                            LocalDate start, LocalDate end) {
+    String bookName, String authorName, int amount,
+    LocalDate start, LocalDate end) {
         String key = bookName + ":" + authorName;
 
         //check info is right
@@ -210,6 +210,8 @@ public class Library {
                 myRentedBook.setName(bookName);
                 myRentedBook.setAuthorName(authorName);
                 myRentedBook.setAmount(amount);
+                myRentedBook.setStartDate(start);
+                myRentedBook.setEndDate(end);
                 currUser.rentBook(myRentedBook);
 
                 //update bookAvailability
@@ -242,6 +244,37 @@ public class Library {
             stt++;
             System.out.println("\n}");
         }
+    }
+
+    public void returnBook(String userName, 
+    String bookName, String bookAuthorName) {
+        //check if book exist
+        String key = bookName + ":" + bookAuthorName;
+        if (!bookAvailability.containsKey(key)) {
+            System.out.println("Khong co sach nao nhu vay");
+            return;
+        }
+
+        //looping to find the user
+        User choosenUser = null;
+        for (User tmpUser:users) {
+            //if is that user
+            if (tmpUser.getName().equals(userName)) {
+                choosenUser = tmpUser;
+                break;
+            }
+        }
+
+        //check if user exist
+        if (choosenUser == null) {
+            System.out.println("Cannot find user");
+            return;
+        }
+
+        //return and update map
+        int bookReturnQuantity = choosenUser.returnBook(
+            bookName, bookAuthorName);
+        bookAvailability.put(key, bookAvailability.get(key) + bookReturnQuantity);
     }
 
 }

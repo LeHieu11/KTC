@@ -32,4 +32,17 @@ public class User {
     public void rentBook(RentedBook rentedBook){
         rentedBooks.add(rentedBook);
     }
+
+    public int returnBook(String bookName, String bookAuthorName) {
+        for (RentedBook rentedBook:rentedBooks) {
+            if (rentedBook.getName().equals(bookName) &&
+            rentedBook.getAuthorName().equals(bookAuthorName)) {
+                int amount = rentedBook.getAmount();
+                rentedBooks.remove(rentedBook);
+                return amount;
+            }
+        }
+
+        return 0;
+    }
 }

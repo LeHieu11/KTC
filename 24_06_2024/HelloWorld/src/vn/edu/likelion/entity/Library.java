@@ -99,12 +99,31 @@ public class Library {
         System.out.println("Khong tim thay sach duoc chon");
     }
 
-    //change all book in lib and bookAvailability it's name
-    public void updateBook(String oldName, String oldAuthorName,
-                           String newName, String newAuthorName) {
+    //chagne book info depend on hom many book remain in library
+    public void updateBook(String oldName, String oldAuthorName, 
+                        String newName, String newAuthorName,
+                        int amount) {
+        //check if old info is the same as new info
+        if (oldName.equals(newName) && oldAuthorName.equals(newAuthorName)) {
+            System.out.println("Thong tin cu va moi phai it nhat co mot truong khac nhau");
+            return;
+        }
+        
+        String oldKey = oldName + ":" + oldAuthorName;
+        //check if book exist
+        if (!bookAvailability.containsKey(oldKey)) {
+            System.out.println("Khong tim thay sach trung voi thong tin");
+            return;
+        }
 
+        //check if remain book in library available
+        if (bookAvailability.get(oldKey) < amount) {
+            System.out.println("Sach trong kho khong du");
+            return;
+        }
+                
         //change all book with familar book name and author name
-        boolean isBookExist = false;
+        int zero = amount;
         for (Book book : books) {
             //find the first book with the same value and change it
             if( book.getName().equals(oldName) && 
@@ -113,20 +132,18 @@ public class Library {
                 book.setAuthorName(newName);
                 book.setAuthorName(newAuthorName);
 
-                isBookExist = true;
+                zero--;
+            }
+
+            if (zero == 0) {
+                break;
             }
         }
 
-        if(!isBookExist){
-            System.out.println("Khong tim thay sach duoc chon");
-            return;
-        }
-
         //update map
-        String oldKey = oldName + ":" + oldAuthorName;
         String newKey = newName + ":" + newAuthorName;
-        bookAvailability.put(newKey, bookAvailability.get(oldKey));
-        bookAvailability.remove(oldKey);
+        bookAvailability.put(newKey, amount);
+        bookAvailability.put(oldKey, bookAvailability.get(oldKey) - amount);
     }
 
     public void addUser(String name, int age){
@@ -179,7 +196,7 @@ public class Library {
             return;
         }
 
-        //check all user and update
+        //find the user and rent book/books
         for (User currUser:users) {
             if (currUser.getName().equals(userName)) {
                 //init and add rented book to user

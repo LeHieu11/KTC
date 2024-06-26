@@ -94,8 +94,12 @@ public class Main {
                         System.out.print("Ten tac gia moi: ");
                         newAuthorName = myScanner.next();
 
-                        myLib.updateBook(oldBookName, oldAuthorName
-                                , newBookName, newAuthorName);
+                        System.out.print("So Luong: ");
+                        amount = Integer.parseInt(myScanner.next());
+
+                        myLib.updateBook(oldBookName, oldAuthorName, 
+                                newBookName, newAuthorName,
+                                amount);
                         System.out.println("Done");
                         System.out.println("************************************************");
                     }

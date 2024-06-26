@@ -17,7 +17,7 @@ public class Main {
         String userName;
         String oldUserName, newUserName;
         int age, amount;
-        int oldAge, newAge;
+        int git newAge;
         LocalDate start, end;
 
         boolean quit = false;

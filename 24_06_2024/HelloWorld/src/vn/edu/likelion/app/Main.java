@@ -17,7 +17,7 @@ public class Main {
         String userName;
         String oldUserName, newUserName;
         int age, amount;
-        int git newAge;
+        int newAge;
         LocalDate start, end;
 
         boolean quit = false;
@@ -172,9 +172,6 @@ public class Main {
                     try {
                         System.out.print("Ten cu: ");
                         oldUserName = myScanner.next();
-
-                        System.out.print("Tuoi cu: ");
-                        oldAge = Integer.parseInt(myScanner.next());
 
                         System.out.print("Ten moi: ");
                         newUserName = myScanner.next();

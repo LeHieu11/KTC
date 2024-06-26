@@ -2,19 +2,12 @@ package vn.edu.likelion.entity;
 
 import java.time.LocalDate;
 
-public class Ticket {
-    private String bookInfo;
+public class RentedBook extends Book{
     private int amount;
     private LocalDate startDate;
     private LocalDate endDate;
 
-    public Ticket(String bookInfo, int amount,
-                  LocalDate startDate, LocalDate endDate){
-        this.bookInfo = bookInfo;
-        this.amount = amount;
-        this.startDate = startDate;
-        this.endDate = endDate;
-    }
+    public RentedBook(){}
 
     public LocalDate getStartDate() {
         return startDate;
@@ -32,12 +25,17 @@ public class Ticket {
         this.endDate = endDate;
     }
 
+    public int getAmount() {
+        return amount;
+    }
+
+    public void setAmount(int amount) {
+        this.amount = amount;
+    }
+
     @Override
     public String toString() {
-        String bookName = bookInfo.split(":")[0];
-        String authorName = bookInfo.split(":")[1];
-
-        return bookName + "\t" + authorName + "\t" +
+        return super.toString() + "\t" +
                 "So luong: " + amount + "\t" +
                 startDate;
     }

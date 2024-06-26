@@ -1,6 +1,6 @@
 package vn.edu.likelion.app;
 
-import vn.edu.likelion.entity.Libary;
+import vn.edu.likelion.entity.Library;
 
 import java.time.LocalDate;
 import java.util.Scanner;
@@ -8,7 +8,7 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         Scanner myScanner = new Scanner(System.in);
-        Libary myLib = new Libary();
+        Library myLib = new Library();
 
         //declare
         String bookName, authorName;
@@ -71,7 +71,7 @@ public class Main {
                     break;
                 case 3://In tat ca sach
                     try {
-                        myLib.printAllBooks();
+                        myLib.printAllRemainBook();
                         System.out.println("Done");
                         System.out.println("************************************************\n");
                     }
@@ -182,7 +182,7 @@ public class Main {
                         System.out.print("Tuoi moi: ");
                         newAge = Integer.parseInt(myScanner.next());
 
-                        myLib.updateUser(oldUserName, oldAge, newUserName, newAge);
+                        myLib.updateUser(oldUserName, newUserName, newAge);
 
                         System.out.println("Done");
                         System.out.println("************************************************");
@@ -191,16 +191,6 @@ public class Main {
                         System.err.println("Wrong");
                     }
 
-                    break;
-                case 9:
-                    try {
-                        myLib.printRemainBook();
-                        System.out.println("Done");
-                        System.out.println("************************************************");
-                    }
-                    catch(Exception e) {
-                        System.err.println("Wrong");
-                    }
                     break;
                 default:
                     System.out.println("Lua chon khong hop le");

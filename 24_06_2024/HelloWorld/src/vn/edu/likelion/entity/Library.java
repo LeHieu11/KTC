@@ -4,29 +4,29 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class Libary {
+public class Library {
     private ArrayList<Book> books;
     private ArrayList<User> users;
     private HashMap<String, Integer> bookAvailability;
 
-    public Libary() {
+    public Library() {
         books = new ArrayList<>();
         users = new ArrayList<>();
         bookAvailability = new HashMap<>();
     }
 
-    public void printRemainBook() {
+    public void printAllRemainBook() {
         for (String key : bookAvailability.keySet()) {
             String bookName = key.split(":")[0];
             String authorName = key.split(":")[1];
 
-            System.out.println("Book name: " + bookName +
+            System.out.println("Book name: " + bookName + 
                                 "\t\tauthor: " + authorName +
                                 "\t\tamount: " + bookAvailability.get(key));
         }
     }
 
-    public void printAllBooks(){
+    public void printAllBook(){
         HashMap<String, Integer> map = new HashMap<>();
 
         for (Book currBook:books) {
@@ -55,8 +55,13 @@ public class Libary {
     }
 
     public void addBook(String name, String authorName) {
-        books.add(new Book(name, authorName));
+        //Init book and add
+        Book myBook = new Book();
+        myBook.setName(name);
+        myBook.setAuthorName(authorName);
+        books.add(myBook);
 
+        //update map
         String key = name + ":" + authorName;
         if (!bookAvailability.containsKey(key)){
             bookAvailability.put(key, 1);
@@ -77,13 +82,12 @@ public class Libary {
 
         //Remove books
         for (Book book : books) {
-            if(book.getName().equals(name) &&
-                book.getAuthorName().equals(authorName)){
+            if( book.getName().equals(name) &&
+                book.getAuthorName().equals(authorName) ){
                 books.remove(book);
 
                 //update hashmap
                 bookAvailability.put(key, bookAvailability.get(key) - 1);
-
                 amount--;
             }
 
@@ -103,8 +107,8 @@ public class Libary {
         boolean isBookExist = false;
         for (Book book : books) {
             //find the first book with the same value and change it
-            if(book.getName().equals(oldName) &&
-                    book.getAuthorName().equals(oldAuthorName)){
+            if( book.getName().equals(oldName) && 
+                book.getAuthorName().equals(oldAuthorName) ){
                 //Change the wanted book value
                 book.setAuthorName(newName);
                 book.setAuthorName(newAuthorName);
@@ -113,15 +117,16 @@ public class Libary {
             }
         }
 
-        //change key equal to new book name bookAvailability
+        if(!isBookExist){
+            System.out.println("Khong tim thay sach duoc chon");
+            return;
+        }
+
+        //update map
         String oldKey = oldName + ":" + oldAuthorName;
         String newKey = newName + ":" + newAuthorName;
         bookAvailability.put(newKey, bookAvailability.get(oldKey));
         bookAvailability.remove(oldKey);
-
-        if(!isBookExist){
-            System.out.println("Khong tim thay sach duoc chon");
-        }
     }
 
     public void addUser(String name, int age){
@@ -131,7 +136,7 @@ public class Libary {
             return;
         }
 
-        //check if name exist7
+        //check if name exist
         for (User currUser: users) {
             if (currUser.getName().equals(name)) {
                 System.out.println("Hay chon ten khac");
@@ -139,15 +144,18 @@ public class Libary {
             }
         }
 
-        users.add(new User(name, age));
+        //init and add new user
+        User myUser = new User();
+        myUser.setName(name);
+        myUser.setAge(age);
+        users.add(myUser);
     }
 
-    public void updateUser(String oldName, int oldAge,
+    public void updateUser(String oldName,
                            String newName, int newAge) {
         for (User currUser:users){
             //find the user and update
-            if (currUser.getName().equals(oldName) &&
-                currUser.getAge() == oldAge) {
+            if (currUser.getName().equals(oldName)) {
                 currUser.setName(newName);
                 currUser.setAge(newAge);
             }
@@ -174,12 +182,15 @@ public class Libary {
         //check all user and update
         for (User currUser:users) {
             if (currUser.getName().equals(userName)) {
-                String bookInfo = bookName + ":" + authorName;
-                currUser.addTicket(new Ticket(bookInfo, amount, start, end));
+                //init and add rented book to user
+                RentedBook myRentedBook = new RentedBook();
+                myRentedBook.setName(bookName);
+                myRentedBook.setAuthorName(authorName);
+                myRentedBook.setAmount(amount);
+                currUser.rentBook(myRentedBook);
 
                 //update bookAvailability
                 bookAvailability.put(key, bookAvailability.get(key) - amount);
-
                 return;
             }
         }
@@ -194,14 +205,14 @@ public class Libary {
             System.out.print("\t\tTen: " + user.getName());
             System.out.print(" {\n");
 
-            if (user.getTickets().isEmpty()){
+            if (user.getRentedBooks().isEmpty()){
                 System.out.print("\t\tNone");
             }
             else {
-                user.sortTicket();
-                for(Ticket tmpTicket:user.getTickets()){
+                // user.sortTicket();
+                for(RentedBook cuRentedBook:user.getRentedBooks()){
                     System.out.print("\t\t");
-                    System.out.println(tmpTicket);
+                    System.out.println(cuRentedBook);
                 }
             }
 

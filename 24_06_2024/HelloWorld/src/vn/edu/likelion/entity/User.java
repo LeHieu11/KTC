@@ -3,17 +3,11 @@ package vn.edu.likelion.entity;
 import java.util.ArrayList;
 
 public class User {
-
     private String name;
     private int age;
-    private ArrayList<Ticket> tickets;
+    private ArrayList<RentedBook> rentedBooks = new ArrayList<>();
 
-    public User(String name, int age) {
-        this.name = name;
-        this.age = age;
-
-        this.tickets = new ArrayList<>();
-    }
+    public User() {}
 
     public String getName() {
         return name;
@@ -31,17 +25,11 @@ public class User {
         this.age = age;
     }
 
-    public ArrayList<Ticket> getTickets() {
-        return tickets;
+    public ArrayList<RentedBook> getRentedBooks() {
+        return rentedBooks;
     }
 
-    public void sortTicket(){
-        tickets.sort((o1, o2)
-                -> o1.getStartDate().compareTo(
-                o2.getStartDate()));
-    }
-
-    public void addTicket(Ticket ticket){
-        tickets.add(ticket);
+    public void rentBook(RentedBook rentedBook){
+        rentedBooks.add(rentedBook);
     }
 }

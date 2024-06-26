@@ -1,6 +1,6 @@
 package vn.edu.likelion.app;
 
-import vn.edu.likelion.entity.Libary;
+import vn.edu.likelion.entity.Library;
 
 import java.time.LocalDate;
 import java.util.Scanner;
@@ -8,7 +8,7 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         Scanner myScanner = new Scanner(System.in);
-        Libary myLib = new Libary();
+        Library myLib = new Library();
 
         //declare
         String bookName, authorName;

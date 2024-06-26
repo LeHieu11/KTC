@@ -4,12 +4,12 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class Libary {
+public class Library {
     private ArrayList<Book> books;
     private ArrayList<User> users;
     private HashMap<String, Integer> bookAvailability;
 
-    public Libary() {
+    public Library() {
         books = new ArrayList<>();
         users = new ArrayList<>();
         bookAvailability = new HashMap<>();

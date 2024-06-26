@@ -17,7 +17,7 @@ public class Main {
         String userName;
         String oldUserName, newUserName;
         int age, amount;
-        int oldAge, newAge;
+        int newAge;
         LocalDate start, end;
 
         boolean quit = false;
@@ -173,16 +173,13 @@ public class Main {
                         System.out.print("Ten cu: ");
                         oldUserName = myScanner.next();
 
-                        System.out.print("Tuoi cu: ");
-                        oldAge = Integer.parseInt(myScanner.next());
-
                         System.out.print("Ten moi: ");
                         newUserName = myScanner.next();
 
                         System.out.print("Tuoi moi: ");
                         newAge = Integer.parseInt(myScanner.next());
 
-                        myLib.updateUser(oldUserName, oldAge, newUserName, newAge);
+                        myLib.updateUser(oldUserName, newUserName, newAge);
 
                         System.out.println("Done");
                         System.out.println("************************************************");

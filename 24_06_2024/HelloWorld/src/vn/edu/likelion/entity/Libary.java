@@ -142,12 +142,16 @@ public class Libary {
         users.add(new User(name, age));
     }
 
-    public void updateUser(String oldName, int oldAge,
+    public void updateUser(String oldName,
                            String newName, int newAge) {
+        if (newAge < 16) {
+            System.out.println("Tuoi phai lon hon 16");
+            return;
+        }
+
         for (User currUser:users){
             //find the user and update
-            if (currUser.getName().equals(oldName) &&
-                currUser.getAge() == oldAge) {
+            if (currUser.getName().equals(oldName)) {
                 currUser.setName(newName);
                 currUser.setAge(newAge);
             }

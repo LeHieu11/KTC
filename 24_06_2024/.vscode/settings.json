@@ -1,0 +1,7 @@
+{
+    "java.project.sourcePaths": [
+        "HelloWorld\\src"
+    ],
+    "java.project.referencedLibraries": [],
+    "java.project.outputPath": "HelloWorld\\out"
+}

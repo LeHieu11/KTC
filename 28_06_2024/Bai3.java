@@ -26,7 +26,6 @@ public class Bai3 {
             }
     
             ListNode result = dummyHead.next;
-            dummyHead.next = null;
             return result;
         }
     }

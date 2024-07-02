@@ -65,6 +65,18 @@ public class School {
         choosen.updateStudent(studentId, name, birthday, idCard);
     }
 
+    public Student getStudentByStudentId(String studentId) {
+        for (Classroom classroom : classRoomList) {
+            for (Student stu : classroom.getStudentList()) {
+                if (stu.getStudentId().equals(studentId)) {
+                    return stu;
+                }
+            }
+        }
+
+        return null;
+    }
+
     public void printAllClassroom() {
         for (Classroom tmpClass : classRoomList) {
             System.out.println(tmpClass);

@@ -61,18 +61,19 @@ public class Classroom {
         studentList.add(student);
     }
     
-    public void openClass(LocalDate startDate) {
+    public boolean openClass(LocalDate startDate) {
         //Tức là lớp đã mở rồi
-        if (startDate != null) {
-            return;
+        if (this.startDate != null) {
+            return false;
         }
 
         //Chưa đủ số lượng học sinh thì k mở
         if (studentList.size() < 10) {
-            return;
+            return false;
         }
 
         this.setStartDate(startDate);
+        return true;
     }
 
     //Hàm trả về true nếu drop thành công và ngược lại

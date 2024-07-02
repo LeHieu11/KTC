@@ -19,6 +19,10 @@ public class Main {
         mySchool.addStudentsToClassroom(getMockData(), 0);
 
         mySchool.printAllClassroom();
+        boolean flag = mySchool.getClassRoomList().get(0).openClass(LocalDate.now());
+        if(flag) {
+            System.out.println("Mo lop thanh cong");
+        }else System.out.println("Mo lop chua duoc");
     }
 
     public static ArrayList<Student> getMockData() {

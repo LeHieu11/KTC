@@ -1,10 +1,9 @@
 import java.util.LinkedList;
-import java.util.function.Consumer;
 import java.util.function.Function;
 
 class Bai2 {
     public static void main(String[] args) {
-        Function<Integer, LinkedList> solution = (num) -> {
+        Function<Integer, LinkedList<Integer>> solution = (num) -> {
             LinkedList<Integer> ans = new LinkedList<>();
             int remain;
 
@@ -19,14 +18,12 @@ class Bai2 {
             return ans;
         };
 
-        Consumer<Integer> printElem = (in) -> System.out.print(in);
-
         int num = 33;
         LinkedList<Integer> bin = solution.apply(num);
         
         System.out.println("Number: " + num);
         System.out.print("Bin: ");
-        bin.forEach(printElem);
+        bin.forEach(System.out::print);
 
         System.out.println("\n");
 
@@ -35,6 +32,6 @@ class Bai2 {
         
         System.out.println("Number: " + num);
         System.out.print("Bin: ");
-        bin.forEach(printElem);
+        bin.forEach(System.out::print);
     }
 }

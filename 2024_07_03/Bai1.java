@@ -6,8 +6,6 @@ class Bai1 {
     public static void  main(String[] args) {
 
         Function<Integer, Integer> solution = (in) -> {
-            if (in == 2) return 2;
-
             Predicate <Integer> isPrime = (num) -> {
                 if (num == 1) return false;
                 if (num == 2) return true;
@@ -18,6 +16,9 @@ class Bai1 {
 
                 return true;
             };
+
+            if (in == 2) return 2;
+            if (isPrime.test(in)) return in;
 
             for(int i = (int) Math.sqrt(in); i > 2 ; --i) {
                 if (isPrime.test(i) && in % i == 0) return i;
@@ -31,6 +32,10 @@ class Bai1 {
         System.err.println("Largest prime factor: " + solution.apply(number));
 
         number = 36;
+        System.out.println("Number: " + number);
+        System.err.println("Largest prime factor: " + solution.apply(number));
+
+        number = 13;
         System.out.println("Number: " + number);
         System.err.println("Largest prime factor: " + solution.apply(number));
 

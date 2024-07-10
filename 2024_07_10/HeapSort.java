@@ -11,7 +11,7 @@ public class HeapSort {
     public static void toMaxHeap(int[] arr) {
         for(int i = 1; i < arr.length; i++) {
 
-            //if parent "(i -1)/2" < child "i"
+            //if parent "(i -1)/2" < current "i"
             //do a continuestly swap
             if (arr[(i -1)/2] < arr[i]) {
                 int j = i;

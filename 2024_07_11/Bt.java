@@ -1,77 +1,69 @@
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
  * Bt
  */
 public class Bt {
-    public static void main(String[] args) {
-        Scanner myScanner = new Scanner(System.in);
-        String FILE_B;
+    static String FILE_A = "StudentsList.txt";
+    static String FILE_B;
+    static BufferedReader myReader;
+    static BufferedWriter myWriter;
+    static ArrayList<Character> content = new ArrayList<>();
 
-        // input file name
+    static Runnable deleteFileA = () -> {
+        File toDelete = new File(FILE_A);
+        toDelete.delete();
+    };
+
+    public static void main(String[] args) {    
+        // input file A name
+        Scanner myScanner = new Scanner(System.in);
         System.out.print("File name: ");
         FILE_B = myScanner.next();
-        System.out.println();
+        myScanner.close();    
 
-        myScanner.close();
-
-        //init var
-        BufferedWriter myWriter;
-        BufferedReader myReader;
-        String FILE_A = "StudentsList.txt";
-
-        //if file exist?
         try {
-            myWriter = new BufferedWriter(new FileWriter(FILE_B));
-            myReader = new BufferedReader(new FileReader(FILE_A));
-        } catch (Exception e) {
-            System.err.println("File not found!");
-            return;
-        }
+            //get the file A, B
+            myReader = new BufferedReader(
+                new InputStreamReader(new FileInputStream(FILE_A), "UTF-8")
+            );
+            myWriter = new BufferedWriter(
+                new OutputStreamWriter(new FileOutputStream(FILE_B), "UTF-8")
+            );
+            
+            //read file A to content
+            int tmp;
+            while ((tmp = myReader.read()) != -1) {
+                content.add((char) tmp);
+            }
 
-        //read the file
-        StringBuffer content = new StringBuffer();
-        try {
-            String line;
+            //close reader due to jop done
+            myReader.close();
 
-            while ((line = myReader.readLine()) != null) {
-                content.append(line + "\n");
+            //init a thread to delete file A
+            Thread delThread = new Thread(deleteFileA);
+            delThread.start();
+
+            //write to file B
+            for (Character c : content) {
+                myWriter.write((char) c);
             }
             
-        } catch (Exception e) {
-            System.err.println("Cannot read file!");
-        }
-
-        //delete the file
-        try {
-            File toDelete = new File(FILE_A);
-            myReader.close();
-            toDelete.delete();
-        } catch (Exception e) {
-            System.err.println("Cannot delete file!");
-        }
-
-        //write the content
-        try {
-            myWriter.write(content.toString());
-            
-        } catch (Exception e) {
-            System.err.println("Cannot write file!");
-        }
-
-        //close the file
-        try {
+            //close instance and thread
+            delThread.join();
             myReader.close();
             myWriter.close();
-        } catch (Exception e) {
-            System.err.println("Cannot close file!");
-            return;
+        } 
+        catch (Exception e) {
+            System.err.println(e.getMessage());
         }
     }
 }

@@ -12,7 +12,6 @@ import java.util.Base64;
 import java.util.List;
 import java.util.Base64.Decoder;
 import java.util.Base64.Encoder;
-import java.util.Iterator;
 
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
@@ -146,6 +145,8 @@ public class Main {
 
                 System.out.println((int)stt + "\t" + decode(name));
             }   
+
+            excelWorkbook.close();
 
         } catch (Exception e) {
             System.err.println(e.getMessage());
